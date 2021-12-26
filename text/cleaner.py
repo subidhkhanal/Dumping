@@ -1,6 +1,6 @@
 import re
 from unidecode import unidecode
-from .numbers import normalize_numbers
+from .number import normalize_numbers
 
 
 # Regular expression matching whitespace:
