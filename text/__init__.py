@@ -1,5 +1,5 @@
 import re
-from text import cleaner
+from text import cleaners
 from text.symbols import symbols, ctc_symbols
 
 
@@ -46,10 +46,10 @@ def sequence_to_text(sequence):
 
 def _clean_text(text, cleaner_names):
   for name in cleaner_names:
-    cleaner1 = getattr(cleaner, name)
-    if not cleaner1:
-      raise Exception('Unknown cleaner1: %s' % name)
-    text = cleaner1(text)
+    cleaner = getattr(cleaners, name)
+    if not cleaner:
+      raise Exception('Unknown cleaner: %s' % name)
+    text = cleaner(text)
   return text
 
 
