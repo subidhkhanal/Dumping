@@ -1,6 +1,7 @@
-import re
-from unidecode import unidecode
 from .numbers import normalize_numbers
+from unidecode import unidecode
+
+import re
 
 
 _whitespace_re = re.compile(r'\s+')
