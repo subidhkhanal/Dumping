@@ -8,7 +8,6 @@ from audio_processing import window_sumsquare
 
 
 class STFT(torch.nn.Module):
-    """adapted from Prem Seetharaman's https://github.com/pseeth/pytorch-stft"""
     def __init__(self, filter_length=800, hop_length=200, win_length=800,
                  window='hann'):
         super(STFT, self).__init__()
