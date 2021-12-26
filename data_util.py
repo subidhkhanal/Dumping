@@ -5,7 +5,7 @@ import torch.utils.data
 import os
 
 import layers
-from utils import load_wav_to_torch, load_filepaths_and_text
+from util import load_wav_to_torch, load_filepaths_and_text
 from text import text_to_sequence, sequence_to_ctc_sequence
 
 
