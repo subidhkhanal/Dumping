@@ -1,6 +1,6 @@
 import re
-from text import cleaners
-from text.symbol import symbols, ctc_symbols
+from text import cleaner
+from text.symbol import symbol, ctc_symbols
 
 
 # Mappings from symbol to numeric ID and vice versa:
