@@ -1,9 +1,8 @@
 import re
 from unidecode import unidecode
-from .number import normalize_numbers
+from .numbers import normalize_numbers
 
 
-# Regular expression matching whitespace:
 _whitespace_re = re.compile(r'\s+')
 
 # List of (regular expression, replacement) pairs for abbreviations:
