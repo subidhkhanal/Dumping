@@ -1,4 +1,5 @@
 from .numbers import normalize_numbers
+
 from unidecode import unidecode
 
 import re
