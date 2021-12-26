@@ -1,5 +1,5 @@
 import tensorflow as tf
-from text import symbol
+from text import symbols
 
 
 def create_hparams(hparams_string=None, verbose=False):
