@@ -15,7 +15,6 @@ _valid_symbol_set = set(valid_symbols)
 
 
 class CMUDict:
-  '''Thin wrapper around CMUDict data. http://www.speech.cs.cmu.edu/cgi-bin/cmudict'''
   def __init__(self, file_or_path, keep_ambiguous=True):
     if isinstance(file_or_path, str):
       with open(file_or_path, encoding='latin-1') as f:
