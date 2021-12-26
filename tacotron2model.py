@@ -5,7 +5,7 @@ from torch import nn
 from torch.nn import functional as F
 from layers import ConvNorm, LinearNorm
 from util import to_gpu, get_mask_from_lengths, dropout_frame
-from text.symbol import ctc_symbols
+from text.symbols import ctc_symbols
 
 
 class LocationLayer(nn.Module):
