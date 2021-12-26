@@ -5,15 +5,12 @@ class LossScaler:
     def __init__(self, scale=1):
         self.cur_scale = scale
 
-    # `params` is a list / generator of torch.Variable
     def has_overflow(self, params):
         return False
 
-    # `x` is a torch.Tensor
     def _has_inf_or_nan(x):
         return False
 
-    # `overflow` is boolean indicating whether we overflowed in gradient
     def update_scale(self, overflow):
         pass
 
@@ -40,7 +37,6 @@ class DynamicLossScaler:
         self.scale_factor = scale_factor
         self.scale_window = scale_window
 
-    # `params` is a list / generator of torch.Variable
     def has_overflow(self, params):
 #        return False
         for p in params:
@@ -49,23 +45,19 @@ class DynamicLossScaler:
 
         return False
 
-    # `x` is a torch.Tensor
     def _has_inf_or_nan(x):
         cpu_sum = float(x.float().sum())
         if cpu_sum == float('inf') or cpu_sum == -float('inf') or cpu_sum != cpu_sum:
             return True
         return False
 
-    # `overflow` is boolean indicating whether we overflowed in gradient
     def update_scale(self, overflow):
         if overflow:
-            #self.cur_scale /= self.scale_factor
             self.cur_scale = max(self.cur_scale/self.scale_factor, 1)
             self.last_overflow_iter = self.cur_iter
         else:
             if (self.cur_iter - self.last_overflow_iter) % self.scale_window == 0:
                 self.cur_scale *= self.scale_factor
-#        self.cur_scale = 1
         self.cur_iter += 1
 
     @property
@@ -79,9 +71,7 @@ class DynamicLossScaler:
         scaled_loss = loss*self.loss_scale
         scaled_loss.backward()
 
-##############################################################
-# Example usage below here -- assuming it's in a separate file
-##############################################################
+
 if __name__ == "__main__":
     import torch
     from torch.autograd import Variable
@@ -122,7 +112,7 @@ if __name__ == "__main__":
             for param in parameters:
                 param.grad.data.mul_(1. / loss_scaler.loss_scale)
             optimizer.step()
-        # Otherwise, don't do anything -- ie, skip iteration
+        # Otherwise, don't do anything
         else:
             print('OVERFLOW!')
 
